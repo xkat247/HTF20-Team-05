@@ -8,8 +8,8 @@ const dotenv = require("dotenv")
 const app = express()
 
 dotenv.config({
-    path: path.join(__dirname, '/config/config.env')
-  })
+  path: path.join(__dirname, '/config/config.env')
+})
 
 
 connectDB()
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 //app.use('/', require('./routes/index'))
 app.use('/api/events', require('./routes/events'));
 app.use('/api/items', require('./routes/items'));
+app.use('/api/lostfound', require('./routes/lostfound'));
 
 
 

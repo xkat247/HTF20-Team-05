@@ -4,7 +4,7 @@ const Event = require('../models/events')
 
 // get a list of events from database
 router.get('/', function (req, res, next) {
-    Event.find({}).sort({ date: 1 }).then(function (events) {
+    Event.find({ date: { $gt: Date.now() } }).sort({ date: 1 }).then(function (events) {
         res.send(events);
     })
 });
