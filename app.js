@@ -13,8 +13,8 @@ const app = express()
 
 
 dotenv.config({
-    path: path.join(__dirname, '/config/config.env')
-  })
+  path: path.join(__dirname, '/config/config.env')
+})
 
 
 connectDB()
@@ -46,6 +46,7 @@ app.use(passport.session())
 app.use('/auth',require('./routes/auth'))
 app.use('/api/events', require('./routes/events'));
 app.use('/api/items', require('./routes/items'));
+app.use('/api/lostfound', require('./routes/lostfound'));
 
 
 
