@@ -1,0 +1,47 @@
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const mongoose = require('mongoose');
+const User = require('../models/users');
+
+
+module.exports = function (passport) {
+    passport.use(new GoogleStrategy( {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: 'http://localhost:5000/auth/google/callback'
+      //production probelm : above worked with local host
+    },
+    async (accessToken, refreshToken, profile, done) =>{
+
+      const newUser = {
+          googleId: profile.id,
+          email:profile.emails[0].value,
+          displayName:profile.displayName,
+          firstName: profile.name.givenName,
+          lastName:profile.name.familyName,
+          image: profile.photos[0].value
+        }
+        try {
+          let user = await User.findOne({googleId: profile.id})
+          if(user){
+
+            done(null,user)
+          }else{
+            user = await User.create(newUser)
+            done(null,user)
+          }
+        } catch (err) {
+          console.log(err)
+        }
+    }
+    ))
+    passport.serializeUser(function(user, done) {
+    done(null, user.id);
+    });
+
+    passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+    });
+
+}
