@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-12 col-md-6" id="menu">
+            <div class="container">
+                <h2>Canteen Menu</h2>
+                <table class="table table-hover" style="color: white">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let item of items">
+                    <tr>
+                      <td>
+                        {{ item.name | json }}
+                      </td>
+                      <td>
+                        {{item.description | json}}
+                      </td>
+                      <td>
+                        {{item.price | json}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
