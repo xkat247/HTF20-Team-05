@@ -17,6 +17,9 @@ const ItemSchema = new Schema({
     },
     image: {
         type: Buffer
+    },
+    timestamp: {
+        type: Date
     }
 });
 
