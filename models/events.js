@@ -17,11 +17,8 @@ const EventSchema = new Schema({
     },
     image: {
         type: Buffer
-    },
-    timestamp: {
-        type: Date
     }
-});
+}, { timestamps: true });
 
 // event model
 const Event = mongoose.model('event', EventSchema);

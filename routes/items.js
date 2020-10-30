@@ -4,7 +4,7 @@ const Item = require('../models/items')
 
 // get a list of items from database
 router.get('/', function (req, res, next) {
-    Item.find({}).then(function (items) {
+    Item.find({}).sort({ name: 1 }).then(function (items) {
       res.send(items);
     })
   });
