@@ -23,7 +23,13 @@ const UserSchema = new mongoose.Schema({
   },
   image:{
     type:String,
-  }}
+  },
+  role:{
+    type:String,
+    default: 'normie',
+    enum: ['admin','normie']
+  }
+}
   ,
   {
     timestamps:true
