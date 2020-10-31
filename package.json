@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/xkat247/HTF20-Team-05#readme",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "connect-mongo": "^3.2.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
