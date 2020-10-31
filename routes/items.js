@@ -5,17 +5,29 @@ const {ensureAuth,ensureAdmin} = require('../middleware/auth')
 const Item = require('../models/items')
 
 // get a list of items from database
-router.get('/',ensureAuth, function (req, res, next) {
-    Item.find({}).sort({ name: 1 }).then(function (items) {
-        res.send(items);
-    })
+router.get('/',ensureAuth,async (req, res) => {
+    
+    try {
+        var items = await Item.find({}).sort({ name: 1 });
+        res.render('items',{items});
+    } catch (err) {
+         console.log(err)
+    }
+});
+router.get('/add',ensureAuth,async (req, res) => {
+    
+    try {
+        res.render('items_add');
+    } catch (err) {
+         console.log(err)
+    }
 });
   
   // add a new items to the database
-  router.post('/',ensureAuth,ensureAdmin, function (req, res, next) {
+  router.post('/add',ensureAuth,ensureAdmin, function (req, res) {
     Item.create(req.body).then(function (item) {
-        res.send(item);
-    }).catch(next);
+        res.redirect('/')
+    }).catch(err=>{console.log(err)})
   });
   
   // update a items in the database

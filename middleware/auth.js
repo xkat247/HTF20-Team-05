@@ -3,12 +3,12 @@ module.exports = {
       if (req.isAuthenticated()){
         return next()
       }else{
-        res.status(401).send({error:"not authenticated"});
+        res.render('error/404')
       }
     },
     ensureGuest: function (req,res,next){
       if(req.isAuthenticated()){
-        res.status(200).send({msg:"Old user"})
+        res.redirect('/dashboard')
       }else{
         return next()
       }

@@ -15,6 +15,10 @@ const ItemSchema = new Schema({
         type: Number,
         required: [true, 'Price field is required']
     },
+    quant: {
+        type: Number,
+        required: [true, 'Price field is required']
+    },
     image: {
         type: Buffer
     }

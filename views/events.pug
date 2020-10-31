@@ -1,0 +1,16 @@
+extends layout.pug
+include mixins/events_card
+
+block content
+    .d-flex.justify-content-center.mt-3
+        h5 Events
+    .contain
+      if flag
+        a.btn.btn-primary(href='events/add') create
+    .album.py-5
+      .container
+        .row
+          each event in events
+            +thumbCard(event)
+
+    script(src='js/delete.js')

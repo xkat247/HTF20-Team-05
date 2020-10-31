@@ -4,24 +4,35 @@ const {ensureAuth,ensureAdmin} = require('../middleware/auth')
 const Event = require('../models/events')
 
 // get a list of events from database
-router.get('/',ensureAuth,ensureAdmin, function (req, res, next) {
+router.get('/',ensureAuth, function (req, res, next) {
+    var flag=0
+    console.log(1)
+    if(req.user.role==='admin'){
+        flag=1
+        console.log(2)
+    }
+    console.log(3)
     Event.find({ date: { $gt: Date.now() } }).sort({ date: 1 }).then(function (events) {
-        res.send(events);
+        res.render('events',{events},flag);
     })
 });
   
   // add a new event to the database
-  router.post('/',ensureAuth,ensureAdmin, function (req, res, next) {
+  router.post('/add',ensureAuth,ensureAdmin, function (req, res) {
     Event.create(req.body).then(function (event) {
-        res.send(event);
-    }).catch(next);
+        res.redirect('/');
+    })
   });
+  // add a new event to the database
+router.get('/add',ensureAuth,ensureAdmin, function (req, res, next) {
+    res.render('events_add');
+});
   
   // update a event in the database
   router.put('/:id',ensureAuth,ensureAdmin, function (req, res, next) {
     Event.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
         Event.findOne({ _id: req.params.id }).then(function (event) {
-            res.send(event);
+            res.redirect('/');
         });
     });
   });

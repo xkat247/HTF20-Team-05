@@ -13,7 +13,7 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
   (req, res) => {
     // Successful authentication, redirect home.
     //have to add
-    res.status(200).send({msg:"success"});
+    res.redirect('/dashboard')
   });
 
 //@desc logging out user
@@ -21,7 +21,7 @@ router.get('/google/callback', passport.authenticate('google', { failureRedirect
 router.get('/logout',(req, res) => {
       req.logout()
       //what to do now
-      res.status(200).send({msg:"success"})
+      res.redirect('/')
     });
 
 module.exports = router
