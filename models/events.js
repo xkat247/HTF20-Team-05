@@ -12,7 +12,7 @@ const EventSchema = new Schema({
         required: [true, 'Description field is required']
     },
     date: {
-        type: Date,
+        type: String,
         required: [true, 'Date field is required']
     },
     image: {

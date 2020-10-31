@@ -7,7 +7,6 @@ mixin thumbCard(event)
         .card-text.mb-4 #{event.date}
         if flag
           .d-flex.justify-content-between.align-items-center
-          
-            a.btn.btn-sm.btn-primary.post(href=`/events/${event._id}`) Details
-
+            a.btn.btn-sm.btn-primary.post(href=`/${event._id}`) Edit
+            a.btn.btn-sm.btn-primary.post(href=`/${event._id}`) Delete
           small.text-muted *

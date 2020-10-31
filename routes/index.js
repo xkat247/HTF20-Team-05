@@ -9,8 +9,7 @@ router.get('/',ensureGuest,(req,res) => {
 })
 
 router.get('/dashboard', async (req, res) => {
-  var user = req.user.name
-  res.render('dashboard',{user})
+  res.render('dashboard')
 })
 
 module.exports = router

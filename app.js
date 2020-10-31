@@ -59,7 +59,6 @@ app.use('/auth',require('./routes/auth'))
 app.use('/api/events', require('./routes/events'));
 app.use('/api/items', require('./routes/items'));
 app.use('/api/lostfound', require('./routes/lostfound'));
-app.use('/api/admin', require('./routes/admin'));
 
 
 

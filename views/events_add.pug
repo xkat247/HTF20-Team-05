@@ -8,14 +8,14 @@ block content
 						h5.card-header.info-color.white-text.text-center.py-4
 							strong Fill Event details
 					.card-body.px-lg-5.pt-0
-						form.text-center.p-4(style='color: #e3ff00;' method='POST' action='/add')
+						form.text-center.p-4(style='color: #e3ff00;' method='POST' action='#')
 							.form-group.mt-3
 								label.title Name
 								input.form-control#title(type='text' name='name')
 							br
 							.md-form
 								label.desc Description
-								input.form-control#desc(type='textarea' name='body')
+								input.form-control#desc(type='textarea' name='description')
 							br
 							.form-group
 								label.status Date
@@ -23,4 +23,4 @@ block content
 								input.form-control(type='text' name='date')
 
 
-							button.btn.btn-primary.btn.mt-4 Create
+							button.btn.btn-primary.btn.mt-4(type="submit") Create
